@@ -3,7 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMP Grupo Inmobiliario | Bahía Blanca</title>
+  <title>SMP Grupo Inmobiliario | Inmobiliaria en Bahía Blanca, Monte Hermoso y Sierra de la Ventana</title>
+  <meta name="description" content="Inmobiliaria en Bahía Blanca. Vendé tu casa en menos de 6 meses con SMP Grupo Inmobiliario. Servicio profesional en Bahía Blanca, Monte Hermoso, Sierra de la Ventana y alrededores. Martillero Sergio Magariños, matrícula 2335." />
+  <meta name="keywords" content="inmobiliaria Bahía Blanca, vender casa Bahía Blanca, propiedades Bahía Blanca, martillero Bahía Blanca, inmobiliaria Monte Hermoso, inmobiliaria Sierra de la Ventana, SMP grupo inmobiliario, tasación Bahía Blanca, alquiler Bahía Blanca, comprar casa Bahía Blanca" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="SMP Grupo Inmobiliario - Sergio Andrés Magariños" />
+  <link rel="canonical" href="https://smp.com.ar/" />
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smp.com.ar/" />
+  <meta property="og:title" content="SMP Grupo Inmobiliario | Inmobiliaria en Bahía Blanca" />
+  <meta property="og:description" content="Vendé tu propiedad en Bahía Blanca en menos de 6 meses. Fotografía profesional, marketing digital y acompañamiento total hasta la escritura." />
+  <meta property="og:image" content="https://smp.com.ar/Recursos/logo_sin_fondo_blanco.png" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="SMP Grupo Inmobiliario" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SMP Grupo Inmobiliario | Bahía Blanca" />
+  <meta name="twitter:description" content="Inmobiliaria en Bahía Blanca. Vendé tu casa en menos de 6 meses." />
+
+  <!-- Schema.org JSON-LD para Google / IA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "SMP Grupo Inmobiliario",
+    "description": "Inmobiliaria en Bahía Blanca especializada en venta de propiedades. Servicio profesional con fotografía, marketing digital y acompañamiento total hasta la escritura. Atendemos Bahía Blanca, Monte Hermoso, Sierra de la Ventana y alrededores.",
+    "url": "https://smp.com.ar",
+    "logo": "https://smp.com.ar/Recursos/logo_sin_fondo_blanco.png",
+    "image": "https://smp.com.ar/Recursos/edificio.jpg",
+    "telephone": "+5492915120913",
+    "email": "sergio@smp.com.ar",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Undiano 14",
+      "addressLocality": "Bahía Blanca",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -38.7196,
+      "longitude": -62.2724
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Bahía Blanca" },
+      { "@type": "City", "name": "Monte Hermoso" },
+      { "@type": "City", "name": "Sierra de la Ventana" },
+      { "@type": "City", "name": "Punta Alta" },
+      { "@type": "City", "name": "Coronel Rosales" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/smp.inmobiliaria",
+      "https://www.facebook.com/smp.grupoinmobiliario",
+      "https://www.youtube.com/channel/UCqLMZB-0i3mFebfGoJ9GY8Q"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ],
+    "employee": {
+      "@type": "Person",
+      "name": "Sergio Andrés Magariños",
+      "jobTitle": "Martillero",
+      "identifier": "Matrícula 2335"
+    }
+  }
+  </script>
+
   <link rel="icon" type="image/png" href="Recursos/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
@@ -229,27 +308,28 @@
     .propuesta-text strong { color: var(--white); }
     .propuesta-text .btn { margin-top: 12px; }
 
-    .stats-grid {
+    /* ─── PILARES (reemplaza stats) ─── */
+    .pilares-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
     }
-    .stat {
+    .pilar {
       background: var(--black);
       padding: 36px 28px;
       border-left: 3px solid transparent;
       transition: border-color .25s;
     }
-    .stat:hover { border-color: var(--gold); }
-    .stat strong {
-      display: block;
+    .pilar:hover { border-color: var(--gold); }
+    .pilar-icon { font-size: 28px; margin-bottom: 14px; }
+    .pilar h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 60px;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: var(--white);
     }
-    .stat p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .pilar p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
 
     /* ─── MARKETING ─── */
     .marketing { background: var(--black); }
@@ -451,27 +531,57 @@
     }
     .agente {
       background: var(--gray);
-      padding: 18px 22px;
+      padding: 28px 24px;
       display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       gap: 14px;
       transition: background .2s;
+      text-decoration: none;
+      color: var(--white);
     }
     .agente:hover { background: var(--gray-mid); }
-    .agente-init {
-      width: 40px; height: 40px;
+    .agente:hover .agente-wa { opacity: 1; transform: translateY(0); }
+    .agente-avatar {
+      width: 80px; height: 80px;
       border-radius: 50%;
       background: var(--gray-light);
+      overflow: hidden;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      color: var(--gold);
-      flex-shrink: 0;
+      border: 2px solid transparent;
+      transition: border-color .2s;
     }
-    .agente h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .agente:hover .agente-avatar { border-color: var(--gold); }
+    .agente-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .agente-init-txt {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--gold);
+    }
+    .agente h4 { font-size: 14px; font-weight: 600; line-height: 1.3; }
     .agente p { font-size: 12px; color: var(--text-muted); }
+    .agente-wa {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--wa);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .2s, transform .2s;
+    }
+    .agente-wa svg { width: 13px; height: 13px; fill: var(--wa); }
 
     /* ─── COMPRADORES ─── */
     .compradores {
@@ -632,16 +742,53 @@
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── COBERTURA ─── */
+    .cobertura {
+      background: var(--gray);
+      padding: 96px 64px;
+    }
+    .cobertura-sub {
+      font-size: 17px;
+      color: rgba(245,243,238,0.55);
+      max-width: 560px;
+      margin-top: 14px;
+      margin-bottom: 56px;
+      line-height: 1.7;
+    }
+    .ciudades-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .ciudad {
+      background: var(--black);
+      padding: 32px 28px;
+      border-top: 3px solid transparent;
+      transition: border-color .25s;
+    }
+    .ciudad:hover { border-color: var(--gold); }
+    .ciudad-nombre {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .ciudad-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
     /* ─── MOBILE ─── */
     @media (max-width: 900px) {
       nav { padding: 14px 20px; }
       nav ul { display: none; }
       section { padding: 60px 20px; }
+      .cobertura { padding: 60px 20px; }
       .hero-content { padding: 0 24px 64px; }
       .propuesta, .diferencial, .compradores { grid-template-columns: 1fr; gap: 40px; }
+      .pilares-grid { grid-template-columns: 1fr 1fr; }
       .mkt-grid { grid-template-columns: 1fr 1fr; }
-      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, 200px); }
       .photo-grid .photo:first-child { grid-row: span 1; }
+      .ciudades-grid { grid-template-columns: 1fr 1fr; }
       .contacto-inner { grid-template-columns: 1fr; }
       .cta-mid-content { padding: 60px 24px; }
       footer { padding: 32px 20px; flex-direction: column; text-align: center; }
@@ -679,7 +826,7 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content fade-up">
-      <div class="hero-eyebrow">Bahía Blanca y la zona</div>
+      <div class="hero-eyebrow">Bahía Blanca · Monte Hermoso · Sierra de la Ventana · y la zona</div>
       <h1>Hacemos<br>realidad la<br>venta de tu<br><em>casa.</em></h1>
       <p class="hero-sub">Sin estrés, al mejor valor y más rápido. Si es importante para vos, es importante para nosotros.</p>
       <div class="hero-actions">
@@ -719,22 +866,26 @@
       <p>Contás con nuestro acompañamiento hasta la firma de la escritura. <strong>No esperamos que aparezca el comprador — salimos a buscarlo.</strong></p>
       <a href="https://wa.me/5492915120913" target="_blank" class="btn btn-gold" style="margin-top: 16px;">Quiero vender</a>
     </div>
-    <div class="stats-grid fade-up">
-      <div class="stat">
-        <strong>6</strong>
-        <p>Meses máximo pactados para concretar la venta</p>
+    <div class="pilares-grid fade-up">
+      <div class="pilar">
+        <div class="pilar-icon">⏱</div>
+        <h3>Plazo pre-pactado</h3>
+        <p>Trabajamos con un compromiso claro de tiempo para lograr la venta de tu inmueble en Bahía Blanca y la zona.</p>
       </div>
-      <div class="stat">
-        <strong>100%</strong>
-        <p>Digital. Publicamos donde la gente busca</p>
+      <div class="pilar">
+        <div class="pilar-icon">📲</div>
+        <h3>Damos el 100%</h3>
+        <p>Trabajamos con pocas propiedades a la vez para poder dedicarle todo nuestro esfuerzo, y así hacer que las cosas sucedan.</p>
       </div>
-      <div class="stat">
-        <strong>0</strong>
-        <p>Estrés. Nos ocupamos de visitas, negociación y contratos</p>
+      <div class="pilar">
+        <div class="pilar-icon">🤝</div>
+        <h3>Sin estrés</h3>
+        <p>Nos ocupamos de las visitas, la negociación y todos los contratos. Vos solo tomás la decisión final.</p>
       </div>
-      <div class="stat">
-        <strong>+9</strong>
-        <p>Agentes activos en Bahía Blanca y la zona</p>
+      <div class="pilar">
+        <div class="pilar-icon">📍</div>
+        <h3>Conocemos la zona</h3>
+        <p>Operamos en Bahía Blanca, Monte Hermoso, Sierra de la Ventana, Punta Alta y alrededores. Mercado local, sin vueltas.</p>
       </div>
     </div>
   </section>
@@ -799,11 +950,10 @@
       <h2>Así mostramos<br>tu propiedad.</h2>
     </div>
     <div class="photo-grid">
-      <div class="photo"><img src="Recursos/1.jpg" alt="Living comedor" /></div>
-      <div class="photo"><img src="Recursos/2.jpg" alt="Cocina" /></div>
-      <div class="photo"><img src="Recursos/3.jpg" alt="Frente casa" /></div>
-      <div class="photo"><img src="Recursos/4.jpg" alt="Jardín" /></div>
-      <div class="photo"><img src="Recursos/edificio.jpg" alt="Edificio" /></div>
+      <div class="photo"><img src="Recursos/1.jpg" alt="Living comedor en venta Bahía Blanca" /></div>
+      <div class="photo"><img src="Recursos/2.jpg" alt="Cocina propiedad Bahía Blanca" /></div>
+      <div class="photo"><img src="Recursos/3.jpg" alt="Casa en venta Bahía Blanca frente" /></div>
+      <div class="photo"><img src="Recursos/4.jpg" alt="Jardín propiedad Bahía Blanca" /></div>
     </div>
   </section>
 
@@ -829,7 +979,7 @@
     <div class="fundadores fade-up">
       <div class="fundador">
         <div class="fundador-avatar">
-          <img src="https://i.pravatar.cc/150?img=11" alt="Sergio" />
+        <img src="Recursos/sergio.png" alt="Sergio Andrés Magariños - Martillero Bahía Blanca" />
         </div>
         <div class="fundador-info">
           <h3>Sergio A. Magariños</h3>
@@ -839,7 +989,7 @@
       </div>
       <div class="fundador">
         <div class="fundador-avatar">
-          <img src="https://i.pravatar.cc/150?img=47" alt="Catalina" />
+        <img src="Recursos/catalina.png" alt="Catalina Suarez Tejeira - Marketing SMP Bahía Blanca" />
         </div>
         <div class="fundador-info">
           <h3>Catalina Suarez Tejeira</h3>
@@ -851,15 +1001,16 @@
     <div class="fade-up">
       <div class="agentes-label">Nuestros agentes</div>
       <div class="agentes-grid">
-        <div class="agente"><div class="agente-init">MA</div><div><h4>María Alejandra Alegre</h4><p>2914611212</p></div></div>
-        <div class="agente"><div class="agente-init">MC</div><div><h4>María Elena Castañeira</h4><p>2915362406</p></div></div>
-        <div class="agente"><div class="agente-init">LG</div><div><h4>Laura Ayelen Gómez Oviedo</h4><p>2914747876</p></div></div>
-        <div class="agente"><div class="agente-init">AC</div><div><h4>Alexandra Magdalena Cabrera</h4><p>2914713686</p></div></div>
-        <div class="agente"><div class="agente-init">FM</div><div><h4>Fernanda Mariel Medina</h4><p>2932412157</p></div></div>
-        <div class="agente"><div class="agente-init">LS</div><div><h4>Lidia Ivone Sentena Díaz</h4><p>2914073039</p></div></div>
-        <div class="agente"><div class="agente-init">NI</div><div><h4>Natalia Iparraguirre</h4><p>2914367214</p></div></div>
-        <div class="agente"><div class="agente-init">CG</div><div><h4>Claudia Gutiérrez</h4><p>2923695302</p></div></div>
-        <div class="agente"><div class="agente-init">AB</div><div><h4>Alvaro Badillo Maiza</h4><p>2914613172</p></div></div>
+        <a href="https://wa.me/5492914611212" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Maria_Alejandra_Alegre.jpeg" alt="María Alejandra Alegre" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>MA</span>'"/></div><div><h4>María Alejandra Alegre</h4><p>2914611212</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492915362406" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Maria_Elena_Castaneira.jpeg" alt="María Elena Castañeira" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>MC</span>'"/></div><div><h4>María Elena Castañeira</h4><p>2915362406</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492914747876" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Laura_ayelen_Gomez_Oviedo.jpg" alt="Laura Ayelen Gómez Oviedo" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>LG</span>'"/></div><div><h4>Laura Ayelen Gómez Oviedo</h4><p>2914747876</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492914713686" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Alexandra_Magdalena_cabrera.jpg" alt="Alexandra Magdalena Cabrera" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>AC</span>'"/></div><div><h4>Alexandra Magdalena Cabrera</h4><p>2914713686</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492932412157" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Fernanda_Mariel_Medina.jpg" alt="Fernanda Mariel Medina" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>FM</span>'"/></div><div><h4>Fernanda Mariel Medina</h4><p>2932412157</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492914073039" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Lidia_Ivone_Sentena_Diaz.jpeg" alt="Lidia Ivone Sentena Díaz" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>LS</span>'"/></div><div><h4>Lidia Ivone Sentena Díaz</h4><p>2914073039</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492914367214" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Natalia_Iparraguirre.jpeg" alt="Natalia Iparraguirre" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>NI</span>'"/></div><div><h4>Natalia Iparraguirre</h4><p>2914367214</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492923695302" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/claudia_gutierrez.jpeg" alt="Claudia Gutiérrez" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>CG</span>'"/></div><div><h4>Claudia Gutiérrez</h4><p>2923695302</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492914613172" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Alvaro_Badilo.jpeg" alt="Alvaro Badillo Maiza" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>AB</span>'"/></div><div><h4>Alvaro Badillo Maiza</h4><p>2914613172</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
+        <a href="https://wa.me/5492916454972" target="_blank" class="agente"><div class="agente-avatar"><img src="Recursos/agentes/Marcelo_Luis_Campos.jpeg" alt="Marcelo Luis Campos" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=agente-init-txt>ML</span>'"/></div><div><h4>Marcelo Luis Campos</h4><p>2916454972</p></div><div class="agente-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir</div></a>
       </div>
     </div>
   </section>
@@ -910,10 +1061,6 @@
         <div class="contacto-datos">
           <strong>Dirección</strong>
           Undiano 14, Bahía Blanca, Buenos Aires
-          <br><br>
-          <strong>Horarios de atención</strong>
-          Lunes a viernes — 9 a 18 hs<br>
-          Sábados — 9 a 13 hs
         </div>
       </div>
       <div class="contacto-ctas fade-up">
@@ -936,13 +1083,40 @@
     </div>
   </section>
 
+  <!-- COBERTURA -->
+  <section class="cobertura">
+    <div class="fade-up">
+      <div class="section-label">Dónde operamos</div>
+      <h2>Bahía Blanca<br>y la región.</h2>
+      <p class="cobertura-sub">Somos la inmobiliaria de referencia en el sur de la provincia de Buenos Aires. Si tu propiedad está en alguna de estas ciudades, podemos ayudarte.</p>
+    </div>
+    <div class="ciudades-grid fade-up">
+      <div class="ciudad">
+        <div class="ciudad-nombre">Bahía Blanca</div>
+        <div class="ciudad-desc">Ciudad principal. Venta, alquiler, tasación y administración de propiedades.</div>
+      </div>
+      <div class="ciudad">
+        <div class="ciudad-nombre">Monte Hermoso</div>
+        <div class="ciudad-desc">Propiedades en la costa atlántica bonaerense. Casas, lotes y departamentos.</div>
+      </div>
+      <div class="ciudad">
+        <div class="ciudad-nombre">Sierra de la Ventana</div>
+        <div class="ciudad-desc">Propiedades en zona serrana. Cabañas, casas de campo y lotes en la naturaleza.</div>
+      </div>
+      <div class="ciudad">
+        <div class="ciudad-nombre">Coronel Rosales / Punta Alta</div>
+        <div class="ciudad-desc">Y toda la región sur bonaerense: Tornquist, Coronel Suárez, Tres Arroyos y alrededores de Bahía Blanca.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" />
     </div>
     <div class="footer-text">
-      © 2025 SMP Grupo Inmobiliario · Undiano 14, Bahía Blanca · Matrícula 2335
+      © 2026 SMP Grupo Inmobiliario · Undiano 14, Bahía Blanca · Matrícula 2335
     </div>
     <div class="footer-social">
       <a href="https://www.instagram.com/smp.inmobiliaria" target="_blank" class="social-btn" title="Instagram">

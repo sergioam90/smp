@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabajá en inmobiliaria Bahía Blanca | Súmate a SMP Grupo Inmobiliario</title>
+  <meta name="description" content="Trabajá en el sector inmobiliario de Bahía Blanca con autonomía y respaldo. Comisiones desde el 45% hasta el 60%. SMP Grupo Inmobiliario busca agentes comprometidos." />
+  <meta name="keywords" content="trabajo inmobiliario Bahía Blanca, agente inmobiliario Bahía Blanca, empleo inmobiliaria Bahía Blanca, SMP grupo inmobiliario, comisiones inmobiliarias" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://smp.com.ar/sumate" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smp.com.ar/sumate" />
+  <meta property="og:title" content="Trabajá en inmobiliaria en Bahía Blanca | SMP Grupo Inmobiliario" />
+  <meta property="og:description" content="Desarrollá tu carrera inmobiliaria con autonomía, respaldo profesional y las mejores comisiones del mercado." />
+  <meta property="og:image" content="https://smp.com.ar/Recursos/logo_sin_fondo_blanco.png" />
+  <link rel="icon" type="image/png" href="Recursos/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --gold: #f0b429;
+      --gold-dark: #d49e1f;
+      --gray: #141414;
+      --gray-mid: #1e1e1e;
+      --gray-light: #2a2a2a;
+      --text-muted: #777;
+      --wa: #25d366;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(240,180,41,0.1);
+    }
+    .nav-logo img { height: 44px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+    nav ul a { color: var(--white); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; transition: opacity .2s, color .2s; }
+    nav ul a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 10px 22px !important; border-radius: 2px; opacity: 1 !important; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--gold-dark) !important; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all .2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+    .btn-gold { background: var(--gold); color: var(--black); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(245,243,238,0.3); color: var(--white); background: transparent; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* SECTION */
+    section { padding: 96px 64px; }
+    .section-label { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 5.5vw, 76px); line-height: 0.93; margin-bottom: 24px; }
+
+    /* STRIP */
+    .strip { background: var(--gold); color: var(--black); padding: 13px 0; overflow: hidden; white-space: nowrap; }
+    .strip-track { display: inline-flex; animation: marquee 22s linear infinite; }
+    .strip-item { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 3px; padding: 0 40px; }
+    .strip-item::before { content: '✦'; margin-right: 38px; opacity: 0.4; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 120px 64px 80px; gap: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(240,180,41,0.06) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 7vw, 100px); line-height: 0.92; margin-bottom: 28px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub { font-size: 18px; line-height: 1.68; color: rgba(245,243,238,0.62); margin-bottom: 44px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; gap: 3px; }
+    .col-img { overflow: hidden; background: var(--gray-mid); }
+    .col-img:first-child { grid-row: span 2; }
+    .col-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%); transition: filter .4s; display: block; }
+    .col-img:hover img { filter: grayscale(0%); }
+    .col-gold { background: var(--gold); }
+
+    /* PROPUESTA */
+    .propuesta { background: var(--gray); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .propuesta-text p { font-size: 17px; line-height: 1.78; color: rgba(245,243,238,0.62); margin-bottom: 18px; }
+    .propuesta-text strong { color: var(--white); }
+
+    .beneficios { display: flex; flex-direction: column; gap: 2px; }
+    .beneficio { background: var(--black); padding: 24px 28px; border-left: 3px solid transparent; transition: border-color .25s; display: flex; align-items: flex-start; gap: 16px; }
+    .beneficio:hover { border-color: var(--gold); }
+    .beneficio-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .beneficio h4 { font-family: 'Bebas Neue', sans-serif; font-size: 19px; letter-spacing: 1px; margin-bottom: 5px; color: var(--white); }
+    .beneficio p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* MODALIDAD */
+    .modalidad { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .modalidad-img { height: 500px; overflow: hidden; position: relative; }
+    .modalidad-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); display: block; }
+    .modalidad-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 60%, var(--black) 100%); }
+    .modalidad-text p { font-size: 17px; line-height: 1.75; color: rgba(245,243,238,0.62); margin-bottom: 18px; }
+    .modalidad-text strong { color: var(--white); }
+    .req-box { background: var(--gray); border-left: 4px solid var(--gold); padding: 20px 24px; margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--white); }
+
+    /* PILARES */
+    .pilares { background: var(--gray); }
+    .pilares-intro { margin-bottom: 56px; }
+    .pilares-intro p { font-size: 17px; color: rgba(245,243,238,0.5); margin-top: 14px; max-width: 520px; line-height: 1.7; }
+    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .pilar-card { background: var(--black); padding: 40px 32px; border-top: 3px solid transparent; transition: border-color .25s; }
+    .pilar-card:hover { border-color: var(--gold); }
+    .pilar-card .icon { font-size: 28px; margin-bottom: 18px; }
+    .pilar-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 10px; color: var(--white); }
+    .pilar-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+    /* FAQ */
+    .faq { background: var(--black); }
+    .faq-intro { margin-bottom: 56px; }
+    .faq-intro p { font-size: 17px; color: rgba(245,243,238,0.5); margin-top: 14px; }
+    .faq-intro a { color: var(--gold); text-decoration: none; }
+    .faq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .faq-card { background: var(--gray); padding: 40px 32px; border-bottom: 3px solid transparent; transition: border-color .25s; }
+    .faq-card:hover { border-color: var(--gold); }
+    .faq-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.5px; line-height: 1.1; color: var(--gold); margin-bottom: 18px; }
+    .faq-card p { font-size: 14px; color: rgba(245,243,238,0.65); line-height: 1.7; }
+    .faq-card strong { color: var(--white); }
+
+    /* CTA FINAL */
+    .cta-final { background: var(--gold); color: var(--black); padding: 96px 64px; text-align: center; }
+    .cta-final .logo-dark { height: 56px; margin: 0 auto 40px; display: block; }
+    .cta-final h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7vw, 96px); line-height: 0.9; color: var(--black); margin-bottom: 20px; }
+    .cta-final p { font-size: 18px; color: rgba(10,10,10,0.7); max-width: 560px; margin: 0 auto 44px; line-height: 1.7; }
+    .btn-dark { background: var(--black); color: var(--white); padding: 16px 40px; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 2px; display: inline-block; transition: all .2s; }
+    .btn-dark:hover { background: var(--gray-mid); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--gray); padding: 40px 64px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(245,243,238,0.05); flex-wrap: wrap; gap: 20px; }
+    .footer-logo img { height: 36px; display: block; }
+    .footer-text { font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.8; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn { width: 38px; height: 38px; background: var(--black); display: flex; align-items: center; justify-content: center; border-radius: 2px; text-decoration: none; color: var(--white); transition: background .2s; }
+    .social-btn:hover { background: var(--gold); color: var(--black); }
+    .social-btn svg { width: 17px; height: 17px; fill: currentColor; }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 500; width: 58px; height: 58px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.45); transition: transform .2s; text-decoration: none; }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      nav ul { display: none; }
+      section { padding: 60px 20px; }
+      .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 40px; }
+      .hero-collage { display: none; }
+      .propuesta, .modalidad { grid-template-columns: 1fr; gap: 40px; }
+      .pilares-grid, .faq-grid { grid-template-columns: 1fr; }
+      .cta-final { padding: 60px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/5492915120913" target="_blank" class="wa-float">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" />
+    </a>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#propuesta">Nosotros</a></li>
+      <li><a href="index.html#equipo">Equipo</a></li>
+      <li><a href="https://wa.me/5492915120913?text=Hola,%20me%20interesa%20sumarme%20al%20equipo%20de%20SMP" target="_blank" class="nav-cta">Postularme</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="fade-up">
+      <div class="hero-eyebrow">Sector inmobiliario · Bahía Blanca</div>
+      <h1>Trabajá con<br>autonomía<br>y <em>respaldo.</em></h1>
+      <p class="hero-sub">En SMP podés desarrollar tu carrera inmobiliaria con independencia, pero sin estar solo. Un equipo profesional que te respalda, te guía y te ayuda a enfocarte en lo que importa: tus clientes y tus resultados.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5492915120913?text=Hola,%20me%20interesa%20sumarme%20al%20equipo%20de%20SMP" target="_blank" class="btn btn-gold">Postularme ahora</a>
+        <a href="#ofrecemos" class="btn btn-outline">Conocer más</a>
+      </div>
+    </div>
+    <div class="hero-collage fade-up">
+      <div class="col-img">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Equipo inmobiliario Bahía Blanca" />
+      </div>
+      <div class="col-img">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80" alt="Trabajo inmobiliario" />
+      </div>
+      <div class="col-gold"></div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-track">
+      <span class="strip-item">Comisiones del 45% al 60%</span>
+      <span class="strip-item">Sin pagar fotografía ni cartelería</span>
+      <span class="strip-item">Marketing incluido</span>
+      <span class="strip-item">Capacitación constante</span>
+      <span class="strip-item">Trabajo independiente</span>
+      <span class="strip-item">Equipo profesional</span>
+      <span class="strip-item">Comisiones del 45% al 60%</span>
+      <span class="strip-item">Sin pagar fotografía ni cartelería</span>
+      <span class="strip-item">Marketing incluido</span>
+      <span class="strip-item">Capacitación constante</span>
+      <span class="strip-item">Trabajo independiente</span>
+      <span class="strip-item">Equipo profesional</span>
+    </div>
+  </div>
+
+  <!-- QUÉ TE OFRECEMOS -->
+  <section class="propuesta" id="ofrecemos">
+    <div class="propuesta-text fade-up">
+      <div class="section-label">Qué te ofrecemos</div>
+      <h2>Controlá tu<br>crecimiento,<br>manejá tus<br>tiempos.</h2>
+      <p>Si querés independencia, pero también tranquilidad y el apoyo de procesos claros y herramientas modernas, <strong>este es tu lugar.</strong></p>
+      <p>Vas a contar con un equipo profesional que te respalda, te guía y te ayuda a enfocarte en lo importante: <strong>tus clientes y tus resultados.</strong></p>
+      <a href="https://wa.me/5492915120913?text=Hola,%20me%20interesa%20sumarme%20al%20equipo%20de%20SMP" target="_blank" class="btn btn-gold" style="margin-top:16px;">Quiero postularme</a>
+    </div>
+    <div class="beneficios fade-up">
+      <div class="beneficio">
+        <div class="beneficio-icon">💰</div>
+        <div>
+          <h4>La comisión más alta del mercado</h4>
+          <p>Desde el 45% hasta el 60% de todo lo que vendas. Sin pagar fotografía ni cartelería — eso corre por nuestra cuenta.</p>
+        </div>
+      </div>
+      <div class="beneficio">
+        <div class="beneficio-icon">📣</div>
+        <div>
+          <h4>Marketing interno trabajando para vos</h4>
+          <p>Nosotros resolvemos la publicación en todos los portales y redes sociales de las propiedades que captes.</p>
+        </div>
+      </div>
+      <div class="beneficio">
+        <div class="beneficio-icon">🎓</div>
+        <div>
+          <h4>Capacitación y apoyo constante</h4>
+          <p>Formación continua y un equipo profesional asistiéndote en cada etapa del proceso.</p>
+        </div>
+      </div>
+      <div class="beneficio">
+        <div class="beneficio-icon">🤝</div>
+        <div>
+          <h4>Nunca estás solo</h4>
+          <p>Autonomía real con el respaldo de procesos claros, herramientas modernas y un equipo que te cuida la espalda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALIDAD -->
+  <section class="modalidad" id="modalidad">
+    <div class="modalidad-img fade-up">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Modalidad de trabajo SMP Bahía Blanca" />
+    </div>
+    <div class="modalidad-text fade-up">
+      <div class="section-label">Modalidad de trabajo</div>
+      <h2>¿Cuál es la<br>dinámica?</h2>
+      <p>En SMP vas a trabajar de forma <strong>independiente</strong>, administrando tus tiempos y construyendo tu propio negocio inmobiliario, pero siempre acompañado por un equipo que te respalda.</p>
+      <p>Podés dedicarle el tiempo que decidas según tus objetivos: desde un compromiso de <strong>media jornada</strong> hasta un enfoque <strong>full time</strong> si querés acelerar tu crecimiento.</p>
+      <div class="req-box">⚠️ Requisito: al menos 20 hs semanales de dedicación.</div>
+      <br>
+      <p><strong>¿A quién buscamos?</strong><br>Personas comprometidas, con actitud proactiva, ganas de aprender y crecer profesionalmente, que valoren la seriedad y el trato respetuoso con clientes y colegas.</p>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section class="pilares">
+    <div class="pilares-intro fade-up">
+      <div class="section-label">Nuestros pilares</div>
+      <h2>En qué<br>creemos.</h2>
+      <p>Los valores que guían la forma en que trabajamos y construimos equipo en SMP.</p>
+    </div>
+    <div class="pilares-grid fade-up">
+      <div class="pilar-card"><div class="icon">🤲</div><h3>Servicio y calidez humana</h3><p>Cada cliente merece atención real, trato honesto y un acompañamiento que va más allá de cerrar una operación.</p></div>
+      <div class="pilar-card"><div class="icon">🚀</div><h3>Emprender juntos</h3><p>No sos un empleado ni trabajás solo. Somos un grupo de profesionales que construye su propio negocio con red de apoyo.</p></div>
+      <div class="pilar-card"><div class="icon">📚</div><h3>Capacitación constante</h3><p>El mercado cambia. Nos formamos continuamente para dar el mejor servicio y mantenernos a la vanguardia.</p></div>
+      <div class="pilar-card"><div class="icon">🧭</div><h3>Independencia profesional</h3><p>Manejás tus tiempos, construís tu cartera y tomás tus decisiones. La libertad es tuya, el respaldo también.</p></div>
+      <div class="pilar-card"><div class="icon">👥</div><h3>Trabajo en equipo</h3><p>Compartimos procesos, herramientas y conocimiento. Lo que sabe uno, lo sabe el equipo.</p></div>
+      <div class="pilar-card"><div class="icon">📈</div><h3>Crecimiento económico</h3><p>Las mejores comisiones del mercado, sin costos ocultos. Tu esfuerzo se traduce directamente en tus ingresos.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-intro fade-up">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2>Lo que<br>todos preguntan.</h2>
+      <p>¿Te interesa? <a href="https://wa.me/5492915120913?text=Hola,%20me%20interesa%20sumarme%20al%20equipo%20de%20SMP" target="_blank">Postulate y seguimos conversando →</a></p>
+    </div>
+    <div class="faq-grid fade-up">
+      <div class="faq-card">
+        <h3>¿Tengo que invertir?</h3>
+        <p><strong>Sí, claro.</strong> Cualquier emprendedor o profesional independiente sabe que con el esfuerzo solo no alcanza. <strong>No es posible ganar miles de dólares por año sin invertir.</strong></p>
+      </div>
+      <div class="faq-card">
+        <h3>¿Cuánto puedo ganar?</h3>
+        <p>Te ofrecemos la mejor comisión del mercado: <strong>desde el 45% y hasta el 60% de todo lo que vendas.</strong><br><br>Por ejemplo, si vendés una propiedad de USD 100.000, podés obtener hasta <strong>USD 3.600 de comisión.</strong></p>
+      </div>
+      <div class="faq-card">
+        <h3>¿Necesito experiencia?</h3>
+        <p>No es necesario, aunque siempre ayuda. Este trabajo requiere actitud, mentalidad de aprendizaje constante y ser muy proactivo. <strong>Buscamos personas comprometidas, que quieran un cambio real de estilo de vida.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="cta-final fade-up">
+    <img src="Recursos/logo_sin_fondo_negro.png" alt="SMP Grupo Inmobiliario" class="logo-dark" />
+    <h2>¿Querés<br>ser parte?</h2>
+    <p>Escribinos por WhatsApp y nos pondremos en contacto para darte más información y evaluar si tu perfil puede encajar en nuestro equipo.</p>
+    <a href="https://wa.me/5492915120913?text=Hola,%20me%20interesa%20sumarme%20al%20equipo%20de%20SMP" target="_blank" class="btn-dark">Postularme ahora</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" /></div>
+    <div class="footer-text">© 2026 SMP Grupo Inmobiliario · Undiano 14, Bahía Blanca · Matrícula 2335</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/smp.inmobiliaria" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a href="https://www.facebook.com/smp.grupoinmobiliario" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.youtube.com/channel/UCqLMZB-0i3mFebfGoJ9GY8Q" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
