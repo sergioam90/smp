@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Agentes | SMP Grupo Inmobiliario</title>
+  <link rel="icon" type="image/png" href="Recursos/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --gold: #f0b429;
+      --gold-dark: #d49e1f;
+      --gray: #141414;
+      --gray-mid: #1e1e1e;
+      --gray-light: #2a2a2a;
+      --text-muted: #777;
+      --wa: #25d366;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── PASSWORD GATE ─── */
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0;
+    }
+    #gate.hidden { display: none; }
+    .gate-box {
+      background: var(--gray-mid);
+      border: 1px solid rgba(240,180,41,0.2);
+      border-radius: 4px;
+      padding: 56px 48px 48px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    .gate-logo {
+      height: 48px;
+      margin-bottom: 32px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .gate-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .gate-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .gate-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+    .gate-input {
+      width: 100%;
+      background: var(--gray-light);
+      border: 1px solid rgba(240,180,41,0.2);
+      border-radius: 3px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .gate-input:focus { border-color: var(--gold); }
+    .gate-input::placeholder { color: var(--text-muted); letter-spacing: 0; }
+    .gate-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: 3px;
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .gate-btn:hover { background: var(--gold-dark); }
+    .gate-error {
+      font-size: 12px;
+      color: #e05555;
+      margin-top: 12px;
+      min-height: 18px;
+    }
+
+    /* ─── MAIN CONTENT (hidden until unlocked) ─── */
+    #content { display: none; }
+    #content.visible { display: block; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(240,180,41,0.12);
+    }
+    .nav-logo img { height: 40px; display: block; }
+    .nav-badge {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(240,180,41,0.1);
+      border: 1px solid rgba(240,180,41,0.3);
+      border-radius: 2px;
+      padding: 5px 12px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-logout {
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-logout:hover { color: var(--white); }
+
+    /* ─── HEADER ─── */
+    .page-header {
+      padding: 120px 64px 72px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .page-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+    .page-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .page-header h1 em { font-style: normal; color: var(--gold); }
+    .page-header p {
+      font-size: 17px;
+      color: rgba(245,243,238,0.6);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 64px 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    section + section { padding-top: 0; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    /* ─── CARDS GRID ─── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--gray-mid);
+      border: 1px solid rgba(240,180,41,0.1);
+      border-radius: 4px;
+      padding: 28px 24px 24px;
+      text-decoration: none;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover {
+      border-color: rgba(240,180,41,0.5);
+      transform: translateY(-3px);
+    }
+    .card-icon {
+      width: 36px; height: 36px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .card-icon.canva { background: rgba(0,194,168,0.15); color: #00c2a8; }
+    .card-icon.drive { background: rgba(240,180,41,0.12); color: var(--gold); }
+    .card-icon.ig    { background: rgba(200,80,160,0.15); color: #c850a0; }
+    .card-icon.yt    { background: rgba(255,0,0,0.12); color: #ff4444; }
+    .card-step {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .card-name {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .card-arrow {
+      margin-top: auto;
+      padding-top: 12px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .card:hover .card-arrow { opacity: 1; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(240,180,41,0.08);
+      margin: 8px 64px;
+    }
+
+    /* ─── PROCESO DE VENTA ─── */
+    .proceso-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(240,180,41,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .proceso-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 28px;
+      background: var(--gray-mid);
+      border-bottom: 1px solid rgba(240,180,41,0.06);
+    }
+    .proceso-step:last-child { border-bottom: none; }
+    .paso-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--gold);
+      opacity: 0.35;
+      min-width: 40px;
+      line-height: 1;
+    }
+    .paso-body { flex: 1; }
+    .paso-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .paso-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CONTACTO / WA ─── */
+    .contacto-strip {
+      background: var(--gray-mid);
+      border: 1px solid rgba(240,180,41,0.12);
+      border-radius: 4px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .contacto-strip h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .contacto-strip h2 em { font-style: normal; color: var(--gold); }
+    .contacto-strip p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .wa-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wa);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: opacity .2s;
+    }
+    .btn-wa:hover { opacity: 0.88; }
+    .btn-wa svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-top: 80px;
+      padding: 40px 64px;
+      border-top: 1px solid rgba(240,180,41,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer img { height: 36px; opacity: 0.5; }
+    footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 24px; }
+      .page-header { padding: 100px 24px 48px; }
+      section { padding: 48px 24px; }
+      .divider { margin: 0 24px; }
+      .cards { grid-template-columns: 1fr; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .contacto-strip { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PASSWORD GATE
+═══════════════════════════════════════ -->
+<div id="gate">
+  <div class="gate-box">
+    <img src="Recursos/logo_sin_fondo_blanco.png" class="gate-logo" alt="SMP" />
+    <p class="gate-eyebrow">Acceso Restringido</p>
+    <h2 class="gate-title">Portal Agentes</h2>
+    <p class="gate-sub">Ingresá la contraseña para acceder a los recursos del equipo.</p>
+    <input
+      type="password"
+      id="gate-pw"
+      class="gate-input"
+      placeholder="Contraseña"
+      autocomplete="current-password"
+    />
+    <button class="gate-btn" onclick="checkPassword()">Ingresar</button>
+    <p class="gate-error" id="gate-err"></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════ -->
+<div id="content">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" />
+    </div>
+    <div class="nav-right">
+      <span class="nav-badge">Portal Interno</span>
+      <a class="nav-logout" onclick="logout()">Cerrar sesión</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <p class="page-eyebrow">Uso interno · Equipo SMP</p>
+    <h1>TUS RECURSOS<br/><em>DE TRABAJO</em></h1>
+    <p>Todo lo que necesitás para operar: capacitaciones, materiales de marketing, propiedades activas y canales de comunicación directa.</p>
+  </div>
+
+  <!-- ── CAPACITACIONES INICIALES ── -->
+  <section id="capacitaciones">
+    <p class="section-label">Paso a paso</p>
+    <h2 class="section-title">Capacitaciones Iniciales</h2>
+    <p class="section-desc">Cuatro módulos para arrancar con todo. Seguí el orden.</p>
+    <div class="cards">
+
+      <a href="https://www.canva.com/design/DAGufmArZeg/UtrKQdfiGPh2Z6Jz6MhnVw/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <span class="card-step">Onboarding · Módulo 1</span>
+        <p class="card-name">Bienvenida al equipo</p>
+        <p class="card-desc">Presentación de SMP, valores, cultura y cómo nos organizamos.</p>
+        <span class="card-arrow">Ver en Canva →</span>
+      </a>
+
+      <a href="https://www.canva.com/design/DAGvxj9UXwg/YH8K8_3uPUTk-__fQwjLcA/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <span class="card-step">Onboarding · Módulo 2</span>
+        <p class="card-name">Proceso de captación</p>
+        <p class="card-desc">Cómo conseguir propiedades y gestionar el primer contacto con el propietario.</p>
+        <span class="card-arrow">Ver en Canva →</span>
+      </a>
+
+      <a href="https://www.canva.com/design/DAGvxj9UXwg/YH8K8_3uPUTk-__fQwjLcA/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <span class="card-step">Onboarding · Módulo 3</span>
+        <p class="card-name">Gestión de interesados</p>
+        <p class="card-desc">Seguimiento de consultas, calificación de compradores y coordinación de visitas.</p>
+        <span class="card-arrow">Ver en Canva →</span>
+      </a>
+
+      <a href="https://www.canva.com/design/DAGyleTO6vE/tnZOXANHZx-JkbWefX8wgw/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <span class="card-step">Onboarding · Módulo 4</span>
+        <p class="card-name">Cierre y escritura</p>
+        <p class="card-desc">Del acuerdo a la firma: documentación, plazos y comisiones.</p>
+        <span class="card-arrow">Ver en Canva →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── PROPIEDADES EN VENTA ── -->
+  <section id="propiedades">
+    <p class="section-label">Cartera activa</p>
+    <h2 class="section-title">Propiedades en Venta</h2>
+    <p class="section-desc">Listado actualizado de propiedades disponibles para trabajar.</p>
+    <div class="cards" style="max-width:340px;">
+
+      <a href="https://www.canva.com/design/DAGyleTO6vE/tnZOXANHZx-JkbWefX8wgw/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <span class="card-step">Canva · Actualizado</span>
+        <p class="card-name">Cartera de propiedades</p>
+        <p class="card-desc">Todas las propiedades activas con detalle, precios y estado de gestión.</p>
+        <span class="card-arrow">Ver listado →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── MARKETING ── -->
+  <section id="marketing">
+    <p class="section-label">Herramientas</p>
+    <h2 class="section-title">Guía de Marketing</h2>
+    <p class="section-desc">Recursos para publicar, fotografiar y comunicar propiedades con la identidad de SMP.</p>
+    <div class="cards" style="max-width:340px;">
+
+      <a href="https://www.canva.com/design/DAGylwqiV9k/KNpPwLxslvCmu031IYXWCA/view" target="_blank" rel="noopener" class="card">
+        <div class="card-icon canva">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <span class="card-step">Canva · Guía completa</span>
+        <p class="card-name">Recomendaciones de marketing</p>
+        <p class="card-desc">Plantillas, pautas visuales, copy para publicaciones y redes sociales.</p>
+        <span class="card-arrow">Ver guía →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── OTROS ARCHIVOS ── -->
+  <section id="archivos">
+    <p class="section-label">Google Drive</p>
+    <h2 class="section-title">Otros Archivos</h2>
+    <p class="section-desc">Carpetas compartidas en Drive con documentos, logos y materiales adicionales.</p>
+    <div class="cards">
+
+      <a href="https://drive.google.com/drive/folders/12Il1Xqs8UO5afx5gaQVztVyYAFSCXZ09" target="_blank" rel="noopener" class="card">
+        <div class="card-icon drive">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <span class="card-step">Drive · Logos</span>
+        <p class="card-name">Logos y marca SMP</p>
+        <p class="card-desc">Versiones del logo en distintos formatos y fondos para usar en publicaciones.</p>
+        <span class="card-arrow">Abrir en Drive →</span>
+      </a>
+
+      <a href="https://drive.google.com/drive/folders/1TIBvFr7Owf6A8vR6yHavK7Rx8onUwPcV" target="_blank" rel="noopener" class="card">
+        <div class="card-icon drive">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <span class="card-step">Drive · Documentos</span>
+        <p class="card-name">Documentos y formularios</p>
+        <p class="card-desc">Contratos, boletos, reservas y cualquier doc necesario para las operaciones.</p>
+        <span class="card-arrow">Abrir en Drive →</span>
+      </a>
+
+      <a href="https://drive.google.com/drive/folders/1TIBvFr7Owf6A8vR6yHavK7Rx8onUwPcV" target="_blank" rel="noopener" class="card">
+        <div class="card-icon drive">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <span class="card-step">Drive · Gestión</span>
+        <p class="card-name">Coordinar con marketing</p>
+        <p class="card-desc">Material y briefings para coordinar publicaciones con el equipo de marketing.</p>
+        <span class="card-arrow">Abrir en Drive →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── PROCESO DE VENTA ── -->
+  <section id="proceso">
+    <p class="section-label">Guía operativa</p>
+    <h2 class="section-title">Proceso de Venta</h2>
+    <p class="section-desc">El paso a paso de una operación, desde la captación hasta la escritura.</p>
+
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <span class="paso-num">01</span>
+        <div class="paso-body">
+          <p class="paso-title">Captación de la propiedad</p>
+          <p class="paso-desc">Contacto inicial con el propietario, tasación, firma de autorización exclusiva y carga en el sistema.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <span class="paso-num">02</span>
+        <div class="paso-body">
+          <p class="paso-title">Publicación y difusión</p>
+          <p class="paso-desc">Fotografías profesionales, descripción, publicación en portales y redes. Seguí la guía de marketing.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <span class="paso-num">03</span>
+        <div class="paso-body">
+          <p class="paso-title">Gestión de consultas y visitas</p>
+          <p class="paso-desc">Calificación del interesado, coordinación de visitas y seguimiento post-visita.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <span class="paso-num">04</span>
+        <div class="paso-body">
+          <p class="paso-title">Oferta y negociación</p>
+          <p class="paso-desc">Presentación de ofertas al propietario, contrapropuestas y acuerdo de precio.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <span class="paso-num">05</span>
+        <div class="paso-body">
+          <p class="paso-title">Reserva y boleto</p>
+          <p class="paso-desc">Firma de reserva, cobro de seña y envío de documentación al abogado. Carpeta en Drive.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <span class="paso-num">06</span>
+        <div class="paso-body">
+          <p class="paso-title">Escritura y cobro de comisión</p>
+          <p class="paso-desc">Firma ante escribano, liquidación de la operación y cobro de honorarios según escala vigente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── RECURSOS RECOMENDADOS ── -->
+  <section id="recursos">
+    <p class="section-label">Para seguir aprendiendo</p>
+    <h2 class="section-title">Recursos Recomendados</h2>
+    <p class="section-desc">Contenido externo que el equipo recomienda para crecer como agente.</p>
+    <div class="cards">
+
+      <a href="#" target="_blank" rel="noopener" class="card">
+        <div class="card-icon ig">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <span class="card-step">Instagram · Perfil 1</span>
+        <p class="card-name">Cuenta recomendada</p>
+        <p class="card-desc">Seguí este perfil para tips de captación, negociación y marketing inmobiliario.</p>
+        <span class="card-arrow">Ver en Instagram →</span>
+      </a>
+
+      <a href="#" target="_blank" rel="noopener" class="card">
+        <div class="card-icon ig">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <span class="card-step">Instagram · Perfil 2</span>
+        <p class="card-name">Cuenta recomendada</p>
+        <p class="card-desc">Contenido sobre tendencias del mercado inmobiliario y técnicas de venta.</p>
+        <span class="card-arrow">Ver en Instagram →</span>
+      </a>
+
+      <a href="#" target="_blank" rel="noopener" class="card">
+        <div class="card-icon yt">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--black)"/></svg>
+        </div>
+        <span class="card-step">YouTube · Video</span>
+        <p class="card-name">Video recomendado</p>
+        <p class="card-desc">Clase o entrevista que el equipo SMP recomienda para tu formación como agente.</p>
+        <span class="card-arrow">Ver en YouTube →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── CONTACTO ── -->
+  <section id="contacto">
+    <div class="contacto-strip">
+      <h2>¿NECESITÁS<br/><em>ALGO MÁS?</em></h2>
+      <p>Ante cualquier duda, consulta o novedad, escribinos por WhatsApp.</p>
+      <div class="wa-buttons">
+        <a href="https://wa.me/5492915120913" target="_blank" rel="noopener" class="btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2.002C6.477 2.002 2 6.479 2 12.001c0 1.76.457 3.426 1.257 4.878L2 22l5.278-1.38C8.652 21.499 10.296 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2h-.001zm0 18c-1.624 0-3.13-.438-4.43-1.198l-.317-.189-3.133.82.836-3.049-.207-.319C3.488 14.851 3 13.477 3 12.001 3 7.029 7.029 3 11.999 3 16.97 3 21 7.029 21 12s-4.03 9.002-9.001 9.002z"/></svg>
+          WhatsApp Oficina
+        </a>
+        <a href="https://wa.me/542915077392" target="_blank" rel="noopener" class="btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2.002C6.477 2.002 2 6.479 2 12.001c0 1.76.457 3.426 1.257 4.878L2 22l5.278-1.38C8.652 21.499 10.296 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2h-.001zm0 18c-1.624 0-3.13-.438-4.43-1.198l-.317-.189-3.133.82.836-3.049-.207-.319C3.488 14.851 3 13.477 3 12.001 3 7.029 7.029 3 11.999 3 16.97 3 21 7.029 21 12s-4.03 9.002-9.001 9.002z"/></svg>
+          WhatsApp Sergio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" />
+    <p>© 2026 SMP Grupo Inmobiliario · Uso interno exclusivo</p>
+  </footer>
+
+</div><!-- /#content -->
+
+<script>
+  const PASSWORD = 'SMP2025@agentes';
+  const SESSION_KEY = 'smp_interno_auth';
+
+  function checkPassword() {
+    const input = document.getElementById('gate-pw').value;
+    if (input === PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      unlock();
+    } else {
+      document.getElementById('gate-err').textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+      document.getElementById('gate-pw').value = '';
+      document.getElementById('gate-pw').focus();
+    }
+  }
+
+  function unlock() {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('content').classList.add('visible');
+  }
+
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('gate').classList.remove('hidden');
+    document.getElementById('content').classList.remove('visible');
+    document.getElementById('gate-pw').value = '';
+    document.getElementById('gate-err').textContent = '';
+  }
+
+  document.getElementById('gate-pw').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    unlock();
+  }
+</script>
+
+</body>
+</html>
