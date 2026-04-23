@@ -28,7 +28,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── PASSWORD GATE ─── */
+    /* PASSWORD GATE */
     #gate {
       position: fixed;
       inset: 0;
@@ -37,8 +37,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 0;
     }
     #gate.hidden { display: none; }
     .gate-box {
@@ -52,10 +50,8 @@
     }
     .gate-logo {
       height: 48px;
-      margin-bottom: 32px;
+      margin: 0 auto 32px;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
     .gate-eyebrow {
       font-size: 10px;
@@ -115,11 +111,11 @@
       min-height: 18px;
     }
 
-    /* ─── MAIN CONTENT (hidden until unlocked) ─── */
+    /* MAIN CONTENT */
     #content { display: none; }
     #content.visible { display: block; }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -155,7 +151,7 @@
     }
     .nav-logout:hover { color: var(--white); }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     .page-header {
       padding: 120px 64px 72px;
       max-width: 900px;
@@ -191,7 +187,7 @@
       max-width: 520px;
     }
 
-    /* ─── SECTIONS ─── */
+    /* SECTIONS */
     section {
       padding: 64px 64px;
       max-width: 1100px;
@@ -227,7 +223,7 @@
       line-height: 1.6;
     }
 
-    /* ─── CARDS GRID ─── */
+    /* CARDS */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -257,10 +253,11 @@
       justify-content: center;
       margin-bottom: 4px;
     }
-    .card-icon.canva { background: rgba(0,194,168,0.15); color: #00c2a8; }
-    .card-icon.drive { background: rgba(240,180,41,0.12); color: var(--gold); }
-    .card-icon.ig    { background: rgba(200,80,160,0.15); color: #c850a0; }
-    .card-icon.yt    { background: rgba(255,0,0,0.12); color: #ff4444; }
+    .card-icon.canva  { background: rgba(0,194,168,0.15); color: #00c2a8; }
+    .card-icon.drive  { background: rgba(240,180,41,0.12); color: var(--gold); }
+    .card-icon.sheets { background: rgba(52,168,83,0.15); color: #34a853; }
+    .card-icon.ig     { background: rgba(200,80,160,0.15); color: #c850a0; }
+    .card-icon.yt     { background: rgba(255,0,0,0.12); color: #ff4444; }
     .card-step {
       font-size: 10px;
       letter-spacing: 2px;
@@ -289,18 +286,17 @@
     }
     .card:hover .card-arrow { opacity: 1; }
 
-    /* ─── DIVIDER ─── */
+    /* DIVIDER */
     .divider {
       border: none;
       border-top: 1px solid rgba(240,180,41,0.08);
       margin: 8px 64px;
     }
 
-    /* ─── PROCESO DE VENTA ─── */
+    /* PROCESO DE VENTA */
     .proceso-steps {
       display: flex;
       flex-direction: column;
-      gap: 0;
       border: 1px solid rgba(240,180,41,0.1);
       border-radius: 4px;
       overflow: hidden;
@@ -334,7 +330,7 @@
       line-height: 1.6;
     }
 
-    /* ─── CONTACTO / WA ─── */
+    /* CONTACTO */
     .contacto-strip {
       background: var(--gray-mid);
       border: 1px solid rgba(240,180,41,0.12);
@@ -378,7 +374,7 @@
     .btn-wa:hover { opacity: 0.88; }
     .btn-wa svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       margin-top: 80px;
       padding: 40px 64px;
@@ -390,12 +386,9 @@
       gap: 16px;
     }
     footer img { height: 36px; opacity: 0.5; }
-    footer p {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    footer p { font-size: 12px; color: var(--text-muted); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 14px 24px; }
       .page-header { padding: 100px 24px 48px; }
@@ -409,20 +402,18 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     PASSWORD GATE
-═══════════════════════════════════════ -->
+<!-- PASSWORD GATE -->
 <div id="gate">
   <div class="gate-box">
     <img src="Recursos/logo_sin_fondo_blanco.png" class="gate-logo" alt="SMP" />
     <p class="gate-eyebrow">Acceso Restringido</p>
     <h2 class="gate-title">Portal Agentes</h2>
-    <p class="gate-sub">Ingresá la contraseña para acceder a los recursos del equipo.</p>
+    <p class="gate-sub">Ingresa la contrasena para acceder a los recursos del equipo.</p>
     <input
       type="password"
       id="gate-pw"
       class="gate-input"
-      placeholder="Contraseña"
+      placeholder="Contrasena"
       autocomplete="current-password"
     />
     <button class="gate-btn" onclick="checkPassword()">Ingresar</button>
@@ -430,9 +421,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MAIN CONTENT
-═══════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
 <div id="content">
 
   <!-- NAV -->
@@ -442,62 +431,62 @@
     </div>
     <div class="nav-right">
       <span class="nav-badge">Portal Interno</span>
-      <a class="nav-logout" onclick="logout()">Cerrar sesión</a>
+      <a class="nav-logout" onclick="logout()">Cerrar sesion</a>
     </div>
   </nav>
 
   <!-- HEADER -->
   <div class="page-header">
-    <p class="page-eyebrow">Uso interno · Equipo SMP</p>
+    <p class="page-eyebrow">Uso interno &middot; Equipo SMP</p>
     <h1>TUS RECURSOS<br/><em>DE TRABAJO</em></h1>
-    <p>Todo lo que necesitás para operar: capacitaciones, materiales de marketing, propiedades activas y canales de comunicación directa.</p>
+    <p>Todo lo que necesitas para operar: capacitaciones, materiales de marketing, propiedades activas y canales de comunicacion directa.</p>
   </div>
 
-  <!-- ── CAPACITACIONES INICIALES ── -->
+  <!-- CAPACITACIONES -->
   <section id="capacitaciones">
     <p class="section-label">Paso a paso</p>
     <h2 class="section-title">Capacitaciones Iniciales</h2>
-    <p class="section-desc">Cuatro módulos para arrancar con todo. Seguí el orden.</p>
+    <p class="section-desc">Cuatro modulos para arrancar con todo. Segui el orden.</p>
     <div class="cards">
 
       <a href="https://www.canva.com/design/DAGufmArZeg/UtrKQdfiGPh2Z6Jz6MhnVw/view" target="_blank" rel="noopener" class="card">
         <div class="card-icon canva">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
         </div>
-        <span class="card-step">Onboarding · Módulo 1</span>
+        <span class="card-step">Onboarding &middot; Modulo 1</span>
         <p class="card-name">Bienvenida al equipo</p>
-        <p class="card-desc">Presentación de SMP, valores, cultura y cómo nos organizamos.</p>
-        <span class="card-arrow">Ver en Canva →</span>
+        <p class="card-desc">Presentacion de SMP, valores, cultura y como nos organizamos.</p>
+        <span class="card-arrow">Ver en Canva &rarr;</span>
       </a>
 
       <a href="https://www.canva.com/design/DAGvxj9UXwg/YH8K8_3uPUTk-__fQwjLcA/view" target="_blank" rel="noopener" class="card">
         <div class="card-icon canva">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
         </div>
-        <span class="card-step">Onboarding · Módulo 2</span>
-        <p class="card-name">Proceso de captación</p>
-        <p class="card-desc">Cómo conseguir propiedades y gestionar el primer contacto con el propietario.</p>
-        <span class="card-arrow">Ver en Canva →</span>
+        <span class="card-step">Onboarding &middot; Modulo 2</span>
+        <p class="card-name">Proceso de captacion</p>
+        <p class="card-desc">Como conseguir propiedades y gestionar el primer contacto con el propietario.</p>
+        <span class="card-arrow">Ver en Canva &rarr;</span>
       </a>
 
-      <a href="https://www.canva.com/design/DAGvxj9UXwg/YH8K8_3uPUTk-__fQwjLcA/view" target="_blank" rel="noopener" class="card">
+      <a href="https://www.canva.com/design/DAGvVnBPaCk/Z4XJtvkGc-VxysLeQ3fHDQ/view" target="_blank" rel="noopener" class="card">
         <div class="card-icon canva">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
         </div>
-        <span class="card-step">Onboarding · Módulo 3</span>
-        <p class="card-name">Gestión de interesados</p>
-        <p class="card-desc">Seguimiento de consultas, calificación de compradores y coordinación de visitas.</p>
-        <span class="card-arrow">Ver en Canva →</span>
+        <span class="card-step">Onboarding &middot; Modulo 3</span>
+        <p class="card-name">Gestion de interesados</p>
+        <p class="card-desc">Seguimiento de consultas, calificacion de compradores y coordinacion de visitas.</p>
+        <span class="card-arrow">Ver en Canva &rarr;</span>
       </a>
 
       <a href="https://www.canva.com/design/DAGyleTO6vE/tnZOXANHZx-JkbWefX8wgw/view" target="_blank" rel="noopener" class="card">
         <div class="card-icon canva">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
         </div>
-        <span class="card-step">Onboarding · Módulo 4</span>
+        <span class="card-step">Onboarding &middot; Modulo 4</span>
         <p class="card-name">Cierre y escritura</p>
-        <p class="card-desc">Del acuerdo a la firma: documentación, plazos y comisiones.</p>
-        <span class="card-arrow">Ver en Canva →</span>
+        <p class="card-desc">Del acuerdo a la firma: documentacion, plazos y comisiones.</p>
+        <span class="card-arrow">Ver en Canva &rarr;</span>
       </a>
 
     </div>
@@ -505,21 +494,21 @@
 
   <hr class="divider" />
 
-  <!-- ── PROPIEDADES EN VENTA ── -->
+  <!-- PROPIEDADES EN VENTA -->
   <section id="propiedades">
     <p class="section-label">Cartera activa</p>
     <h2 class="section-title">Propiedades en Venta</h2>
     <p class="section-desc">Listado actualizado de propiedades disponibles para trabajar.</p>
     <div class="cards" style="max-width:340px;">
 
-      <a href="https://www.canva.com/design/DAGyleTO6vE/tnZOXANHZx-JkbWefX8wgw/view" target="_blank" rel="noopener" class="card">
-        <div class="card-icon canva">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4tzJLDFHrsWhye3B1aaGJxiGB-ORh0ZvxGetl7YifwP5_9i5xVrs8IsF8Jgh3hlH8PcUtNJX6Md75/pubhtml?gid=27121903&single=true" target="_blank" rel="noopener" class="card">
+        <div class="card-icon sheets">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         </div>
-        <span class="card-step">Canva · Actualizado</span>
+        <span class="card-step">Google Sheets &middot; Actualizado</span>
         <p class="card-name">Cartera de propiedades</p>
-        <p class="card-desc">Todas las propiedades activas con detalle, precios y estado de gestión.</p>
-        <span class="card-arrow">Ver listado →</span>
+        <p class="card-desc">Todas las propiedades activas con detalle, precios y estado de gestion.</p>
+        <span class="card-arrow">Ver listado &rarr;</span>
       </a>
 
     </div>
@@ -527,21 +516,21 @@
 
   <hr class="divider" />
 
-  <!-- ── MARKETING ── -->
+  <!-- MARKETING -->
   <section id="marketing">
     <p class="section-label">Herramientas</p>
-    <h2 class="section-title">Guía de Marketing</h2>
+    <h2 class="section-title">Guia de Marketing</h2>
     <p class="section-desc">Recursos para publicar, fotografiar y comunicar propiedades con la identidad de SMP.</p>
     <div class="cards" style="max-width:340px;">
 
       <a href="https://www.canva.com/design/DAGylwqiV9k/KNpPwLxslvCmu031IYXWCA/view" target="_blank" rel="noopener" class="card">
         <div class="card-icon canva">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <span class="card-step">Canva · Guía completa</span>
+        <span class="card-step">Canva &middot; Guia completa</span>
         <p class="card-name">Recomendaciones de marketing</p>
         <p class="card-desc">Plantillas, pautas visuales, copy para publicaciones y redes sociales.</p>
-        <span class="card-arrow">Ver guía →</span>
+        <span class="card-arrow">Ver guia &rarr;</span>
       </a>
 
     </div>
@@ -549,7 +538,7 @@
 
   <hr class="divider" />
 
-  <!-- ── OTROS ARCHIVOS ── -->
+  <!-- OTROS ARCHIVOS -->
   <section id="archivos">
     <p class="section-label">Google Drive</p>
     <h2 class="section-title">Otros Archivos</h2>
@@ -560,30 +549,30 @@
         <div class="card-icon drive">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
         </div>
-        <span class="card-step">Drive · Logos</span>
+        <span class="card-step">Drive &middot; Logos</span>
         <p class="card-name">Logos y marca SMP</p>
         <p class="card-desc">Versiones del logo en distintos formatos y fondos para usar en publicaciones.</p>
-        <span class="card-arrow">Abrir en Drive →</span>
+        <span class="card-arrow">Abrir en Drive &rarr;</span>
       </a>
 
       <a href="https://drive.google.com/drive/folders/1TIBvFr7Owf6A8vR6yHavK7Rx8onUwPcV" target="_blank" rel="noopener" class="card">
         <div class="card-icon drive">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
         </div>
-        <span class="card-step">Drive · Documentos</span>
+        <span class="card-step">Drive &middot; Documentos</span>
         <p class="card-name">Documentos y formularios</p>
         <p class="card-desc">Contratos, boletos, reservas y cualquier doc necesario para las operaciones.</p>
-        <span class="card-arrow">Abrir en Drive →</span>
+        <span class="card-arrow">Abrir en Drive &rarr;</span>
       </a>
 
       <a href="https://drive.google.com/drive/folders/1TIBvFr7Owf6A8vR6yHavK7Rx8onUwPcV" target="_blank" rel="noopener" class="card">
         <div class="card-icon drive">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
-        <span class="card-step">Drive · Gestión</span>
+        <span class="card-step">Drive &middot; Gestion</span>
         <p class="card-name">Coordinar con marketing</p>
         <p class="card-desc">Material y briefings para coordinar publicaciones con el equipo de marketing.</p>
-        <span class="card-arrow">Abrir en Drive →</span>
+        <span class="card-arrow">Abrir en Drive &rarr;</span>
       </a>
 
     </div>
@@ -591,53 +580,53 @@
 
   <hr class="divider" />
 
-  <!-- ── PROCESO DE VENTA ── -->
+  <!-- PROCESO DE VENTA -->
   <section id="proceso">
-    <p class="section-label">Guía operativa</p>
+    <p class="section-label">Guia operativa</p>
     <h2 class="section-title">Proceso de Venta</h2>
-    <p class="section-desc">El paso a paso de una operación, desde la captación hasta la escritura.</p>
+    <p class="section-desc">El paso a paso de una operacion, desde la captacion hasta la escritura.</p>
 
     <div class="proceso-steps">
       <div class="proceso-step">
         <span class="paso-num">01</span>
         <div class="paso-body">
-          <p class="paso-title">Captación de la propiedad</p>
-          <p class="paso-desc">Contacto inicial con el propietario, tasación, firma de autorización exclusiva y carga en el sistema.</p>
+          <p class="paso-title">Captacion de la propiedad</p>
+          <p class="paso-desc">Contacto inicial con el propietario, tasacion, firma de autorizacion exclusiva y carga en el sistema.</p>
         </div>
       </div>
       <div class="proceso-step">
         <span class="paso-num">02</span>
         <div class="paso-body">
-          <p class="paso-title">Publicación y difusión</p>
-          <p class="paso-desc">Fotografías profesionales, descripción, publicación en portales y redes. Seguí la guía de marketing.</p>
+          <p class="paso-title">Publicacion y difusion</p>
+          <p class="paso-desc">Fotografias profesionales, descripcion, publicacion en portales y redes. Segui la guia de marketing.</p>
         </div>
       </div>
       <div class="proceso-step">
         <span class="paso-num">03</span>
         <div class="paso-body">
-          <p class="paso-title">Gestión de consultas y visitas</p>
-          <p class="paso-desc">Calificación del interesado, coordinación de visitas y seguimiento post-visita.</p>
+          <p class="paso-title">Gestion de consultas y visitas</p>
+          <p class="paso-desc">Calificacion del interesado, coordinacion de visitas y seguimiento post-visita.</p>
         </div>
       </div>
       <div class="proceso-step">
         <span class="paso-num">04</span>
         <div class="paso-body">
-          <p class="paso-title">Oferta y negociación</p>
-          <p class="paso-desc">Presentación de ofertas al propietario, contrapropuestas y acuerdo de precio.</p>
+          <p class="paso-title">Oferta y negociacion</p>
+          <p class="paso-desc">Presentacion de ofertas al propietario, contrapropuestas y acuerdo de precio.</p>
         </div>
       </div>
       <div class="proceso-step">
         <span class="paso-num">05</span>
         <div class="paso-body">
           <p class="paso-title">Reserva y boleto</p>
-          <p class="paso-desc">Firma de reserva, cobro de seña y envío de documentación al abogado. Carpeta en Drive.</p>
+          <p class="paso-desc">Firma de reserva, cobro de sena y envio de documentacion al abogado. Carpeta en Drive.</p>
         </div>
       </div>
       <div class="proceso-step">
         <span class="paso-num">06</span>
         <div class="paso-body">
-          <p class="paso-title">Escritura y cobro de comisión</p>
-          <p class="paso-desc">Firma ante escribano, liquidación de la operación y cobro de honorarios según escala vigente.</p>
+          <p class="paso-title">Escritura y cobro de comision</p>
+          <p class="paso-desc">Firma ante escribano, liquidacion de la operacion y cobro de honorarios segun escala vigente.</p>
         </div>
       </div>
     </div>
@@ -645,7 +634,7 @@
 
   <hr class="divider" />
 
-  <!-- ── RECURSOS RECOMENDADOS ── -->
+  <!-- RECURSOS RECOMENDADOS -->
   <section id="recursos">
     <p class="section-label">Para seguir aprendiendo</p>
     <h2 class="section-title">Recursos Recomendados</h2>
@@ -656,30 +645,30 @@
         <div class="card-icon ig">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </div>
-        <span class="card-step">Instagram · Perfil 1</span>
+        <span class="card-step">Instagram &middot; Perfil 1</span>
         <p class="card-name">Cuenta recomendada</p>
-        <p class="card-desc">Seguí este perfil para tips de captación, negociación y marketing inmobiliario.</p>
-        <span class="card-arrow">Ver en Instagram →</span>
+        <p class="card-desc">Segui este perfil para tips de captacion, negociacion y marketing inmobiliario.</p>
+        <span class="card-arrow">Ver en Instagram &rarr;</span>
       </a>
 
       <a href="#" target="_blank" rel="noopener" class="card">
         <div class="card-icon ig">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </div>
-        <span class="card-step">Instagram · Perfil 2</span>
+        <span class="card-step">Instagram &middot; Perfil 2</span>
         <p class="card-name">Cuenta recomendada</p>
-        <p class="card-desc">Contenido sobre tendencias del mercado inmobiliario y técnicas de venta.</p>
-        <span class="card-arrow">Ver en Instagram →</span>
+        <p class="card-desc">Contenido sobre tendencias del mercado inmobiliario y tecnicas de venta.</p>
+        <span class="card-arrow">Ver en Instagram &rarr;</span>
       </a>
 
       <a href="#" target="_blank" rel="noopener" class="card">
         <div class="card-icon yt">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--black)"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg>
         </div>
-        <span class="card-step">YouTube · Video</span>
+        <span class="card-step">YouTube &middot; Video</span>
         <p class="card-name">Video recomendado</p>
-        <p class="card-desc">Clase o entrevista que el equipo SMP recomienda para tu formación como agente.</p>
-        <span class="card-arrow">Ver en YouTube →</span>
+        <p class="card-desc">Clase o entrevista que el equipo SMP recomienda para tu formacion como agente.</p>
+        <span class="card-arrow">Ver en YouTube &rarr;</span>
       </a>
 
     </div>
@@ -687,10 +676,10 @@
 
   <hr class="divider" />
 
-  <!-- ── CONTACTO ── -->
+  <!-- CONTACTO -->
   <section id="contacto">
     <div class="contacto-strip">
-      <h2>¿NECESITÁS<br/><em>ALGO MÁS?</em></h2>
+      <h2>NECESITAS<br/><em>ALGO MAS?</em></h2>
       <p>Ante cualquier duda, consulta o novedad, escribinos por WhatsApp.</p>
       <div class="wa-buttons">
         <a href="https://wa.me/5492915120913" target="_blank" rel="noopener" class="btn-wa">
@@ -708,10 +697,10 @@
   <!-- FOOTER -->
   <footer>
     <img src="Recursos/logo_sin_fondo_blanco.png" alt="SMP Grupo Inmobiliario" />
-    <p>© 2026 SMP Grupo Inmobiliario · Uso interno exclusivo</p>
+    <p>&copy; 2026 SMP Grupo Inmobiliario &middot; Uso interno exclusivo</p>
   </footer>
 
-</div><!-- /#content -->
+</div>
 
 <script>
   const PASSWORD = 'SMP2025@agentes';
@@ -723,7 +712,7 @@
       sessionStorage.setItem(SESSION_KEY, '1');
       unlock();
     } else {
-      document.getElementById('gate-err').textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+      document.getElementById('gate-err').textContent = 'Contrasena incorrecta. Intenta de nuevo.';
       document.getElementById('gate-pw').value = '';
       document.getElementById('gate-pw').focus();
     }
