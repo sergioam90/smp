@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo trabajamos | SMP Grupo Inmobiliario</title>
+  <link rel="icon" type="image/png" href="Recursos/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --gold: #f0b429;
+      --gold-dark: #d49e1f;
+      --gray: #141414;
+      --gray-mid: #1e1e1e;
+      --gray-light: #2a2a2a;
+      --text-muted: #777;
+      --wa: #25d366;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(240,180,41,0.1);
+    }
+    .nav-logo img { height: 44px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+    nav ul a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity: 0.65;
+      transition: opacity .2s, color .2s;
+    }
+    nav ul a:hover { opacity: 1; color: var(--gold); }
+    nav ul a.active { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--black) !important;
+      padding: 10px 22px !important;
+      border-radius: 2px;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+      letter-spacing: 1px !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-dark) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.3) 0%,
+        rgba(10,10,10,0.1) 40%,
+        rgba(10,10,10,0.88) 80%,
+        rgba(10,10,10,1) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px 80px;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 8vw, 110px);
+      line-height: 0.92;
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(245,243,238,0.65);
+      margin-bottom: 44px;
+      max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: var(--black); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(245,243,238,0.3); color: var(--white); background: transparent; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: #1db954; transform: translateY(-2px); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* ─── STRIP ─── */
+    .strip {
+      background: var(--gold);
+      color: var(--black);
+      padding: 13px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .strip-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+    }
+    .strip-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 17px;
+      letter-spacing: 3px;
+      padding: 0 40px;
+    }
+    .strip-item::before { content: '✦'; margin-right: 38px; opacity: 0.4; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 64px; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--gold);
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 5.5vw, 76px);
+      line-height: 0.93;
+      margin-bottom: 24px;
+    }
+
+    /* ─── MODALIDAD ─── */
+    .modalidad {
+      background: var(--gray);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .modalidad-text p {
+      font-size: 17px;
+      line-height: 1.78;
+      color: rgba(245,243,238,0.62);
+      margin-bottom: 18px;
+    }
+    .modalidad-text strong { color: var(--white); }
+    .etapas {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 8px;
+    }
+    .etapas li {
+      background: var(--black);
+      padding: 18px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-left: 3px solid var(--gold);
+    }
+    .etapa-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .modalidad-img {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+    .modalidad-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75) grayscale(0.3);
+    }
+
+    /* ─── GANANCIAS ─── */
+    .ganancias { background: var(--black); }
+    .ganancias-intro {
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+    .ganancias-intro p {
+      font-size: 17px;
+      color: rgba(245,243,238,0.55);
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .stat {
+      background: var(--gray);
+      padding: 36px 28px;
+      border-left: 3px solid transparent;
+      transition: border-color .25s;
+    }
+    .stat:hover { border-color: var(--gold); }
+    .stat strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .ejemplo-bloque {
+      background: var(--gray);
+      border-left: 4px solid var(--gold);
+      padding: 40px 48px;
+      max-width: 720px;
+    }
+    .ejemplo-bloque h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .ejemplo-bloque p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(245,243,238,0.65);
+    }
+    .ejemplo-bloque strong { color: var(--white); }
+    .ejemplo-bloque .highlight {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: var(--gold);
+      line-height: 1;
+      margin: 16px 0 6px;
+      display: block;
+    }
+
+    /* ─── ESCALA (gold bg) ─── */
+    .escala {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .escala .section-label { color: rgba(10,10,10,0.45); }
+    .escala .section-label::before { background: rgba(10,10,10,0.45); }
+    .escala h2 { color: var(--black); }
+    .escala-intro {
+      max-width: 580px;
+      margin-bottom: 48px;
+    }
+    .escala-intro p {
+      font-size: 17px;
+      color: rgba(10,10,10,0.65);
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+    .escala-intro strong { color: var(--black); }
+    .comisiones-table {
+      width: 100%;
+      max-width: 760px;
+      border-collapse: collapse;
+    }
+    .comisiones-table thead tr {
+      background: rgba(10,10,10,0.12);
+    }
+    .comisiones-table th {
+      padding: 18px 28px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.55);
+    }
+    .comisiones-table td {
+      padding: 20px 28px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--black);
+      border-bottom: 1px solid rgba(10,10,10,0.08);
+    }
+    .comisiones-table tbody tr { background: rgba(255,255,255,0.35); }
+    .comisiones-table tbody tr:hover { background: rgba(255,255,255,0.55); }
+    .nivel-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+    .comision-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--black);
+    }
+    .escala-nota {
+      margin-top: 24px;
+      font-size: 13px;
+      color: rgba(10,10,10,0.5);
+      font-style: italic;
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* ─── OFRECEMOS ─── */
+    .ofrecemos { background: var(--gray-mid); }
+    .ofrecemos-intro {
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+    .ofrecemos-intro p {
+      font-size: 17px;
+      color: rgba(245,243,238,0.5);
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+    .ofrecemos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .ofrece-card {
+      background: var(--gray);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s;
+      border-left: 3px solid transparent;
+    }
+    .ofrece-card:hover { background: var(--black); border-color: var(--gold); }
+    .ofrece-icon { font-size: 28px; margin-bottom: 16px; }
+    .ofrece-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .ofrece-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── REQUISITOS ─── */
+    .requisitos {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .requisitos-text p {
+      font-size: 17px;
+      line-height: 1.78;
+      color: rgba(245,243,238,0.62);
+      margin-bottom: 18px;
+    }
+    .req-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .req-list li {
+      background: var(--gray);
+      padding: 18px 22px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(245,243,238,0.75);
+      display: flex;
+      gap: 14px;
+      border-left: 3px solid transparent;
+      transition: border-color .2s, background .2s;
+    }
+    .req-list li:hover { border-color: var(--gold); background: var(--gray-mid); }
+    .req-list li strong { color: var(--white); }
+    .req-check {
+      color: var(--gold);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--gray); }
+    .faq-intro { margin-bottom: 56px; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .faq-item {
+      background: var(--black);
+      padding: 40px 40px;
+      border-left: 3px solid transparent;
+      transition: border-color .2s;
+    }
+    .faq-item:hover { border-color: var(--gold); }
+    .faq-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .faq-item p {
+      font-size: 15px;
+      color: rgba(245,243,238,0.6);
+      line-height: 1.75;
+    }
+    .faq-item strong { color: var(--white); }
+
+    /* ─── VALORES ─── */
+    .valores {
+      background: var(--gray-mid);
+      text-align: center;
+      padding: 96px 64px;
+    }
+    .valores-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .valores p {
+      font-size: 20px;
+      line-height: 1.75;
+      color: rgba(245,243,238,0.6);
+      margin-bottom: 20px;
+    }
+    .valores p:first-of-type {
+      font-size: 22px;
+      color: rgba(245,243,238,0.75);
+    }
+    .valores strong { color: var(--white); }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .cta-final-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+    .cta-final-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10,10,10,0.97) 45%, rgba(10,10,10,0.4) 100%);
+    }
+    .cta-final-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 64px;
+      max-width: 660px;
+    }
+    .cta-final-content h2 { margin-bottom: 18px; }
+    .cta-final-content p {
+      font-size: 17px;
+      color: rgba(245,243,238,0.6);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .cta-final-content .btn-wa svg { width: 20px; height: 20px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--gray);
+      padding: 40px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(245,243,238,0.05);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo img { height: 36px; display: block; }
+    .footer-text { font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.8; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--white);
+      transition: background .2s, color .2s;
+    }
+    .social-btn:hover { background: var(--gold); color: var(--black); }
+    .social-btn svg { width: 17px; height: 17px; fill: currentColor; }
+
+    /* ─── WA FLOAT ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 500;
+      width: 58px; height: 58px;
+      background: var(--wa);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      nav ul { display: none; }
+      section { padding: 60px 20px; }
+      .hero-content { padding: 0 24px 64px; }
+      .modalidad, .requisitos { grid-template-columns: 1fr; gap: 40px; }
+      .modalidad-img { height: 280px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .ofrecemos-grid { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .cta-final-content { padding: 60px 24px; }
+      .valores { padding: 60px 24px; }
+      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+      .ejemplo-bloque { padding: 28px 24px; }
+    }
+    @media (max-width: 580px) {
+      .ofrecemos-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/5492915120913" target="_blank" class="wa-float" title="Hablanos por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="Recursos/logo sin fondo blanco.png" alt="SMP Grupo Inmobiliario" />
+    </a>
+    <ul>
+      <li><a href="index.html#propuesta">Nosotros</a></li>
+      <li><a href="index.html#marketing">Cómo trabajamos</a></li>
+      <li><a href="index.html#equipo">Equipo</a></li>
+      <li><a href="index.html#compradores">Compradores</a></li>
+      <li>
+        <a href="https://wa.me/5492915120913" target="_blank" class="nav-cta">Contacto</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="Recursos/edificio.jpg" alt="Edificio Bahía Blanca" class="hero-bg" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-up">
+      <div class="hero-eyebrow">Bahía Blanca · Equipo SMP</div>
+      <h1>Construí tu<br>negocio<br>con <em>nosotros.</em></h1>
+      <p class="hero-sub">Autonomía real, comisiones altas y el respaldo de un equipo profesional. Todo lo que necesitás para crecer en el sector inmobiliario.</p>
+      <div class="hero-actions">
+        <a href="#modalidad" class="btn btn-gold">Ver cómo funciona</a>
+        <a href="#cta" class="btn btn-outline">Quiero sumarme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-track">
+      <span class="strip-item">Hasta 60% de comisión</span>
+      <span class="strip-item">Fotografía sin costo</span>
+      <span class="strip-item">Soporte legal y comercial</span>
+      <span class="strip-item">Autonomía total</span>
+      <span class="strip-item">Capacitación constante</span>
+      <span class="strip-item">Portales incluidos</span>
+      <span class="strip-item">Hasta 60% de comisión</span>
+      <span class="strip-item">Fotografía sin costo</span>
+      <span class="strip-item">Soporte legal y comercial</span>
+      <span class="strip-item">Autonomía total</span>
+      <span class="strip-item">Capacitación constante</span>
+      <span class="strip-item">Portales incluidos</span>
+    </div>
+  </div>
+
+  <!-- MODALIDAD -->
+  <section class="modalidad" id="modalidad">
+    <div class="modalidad-text fade-up">
+      <div class="section-label">Modalidad de trabajo</div>
+      <h2>¿Cómo es<br>trabajar en<br>SMP?</h2>
+      <p>Estamos sumando personas que quieran <strong>construir su propio negocio inmobiliario</strong> con autonomía y libertad, pero con el respaldo de un equipo serio, procesos claros y todas las herramientas necesarias para crecer.</p>
+      <p>El proceso se divide en dos grandes etapas:</p>
+      <ul class="etapas">
+        <li>
+          <span class="etapa-num">01</span>
+          <div>
+            <strong>Captar propiedades en exclusiva.</strong><br>
+            <span style="font-size:13px;color:var(--text-muted);">Salís a buscar propietarios que quieran vender y los incorporás a tu cartera.</span>
+          </div>
+        </li>
+        <li>
+          <span class="etapa-num">02</span>
+          <div>
+            <strong>Gestionar interesados y concretar la venta.</strong><br>
+            <span style="font-size:13px;color:var(--text-muted);">Acompañás a los clientes compradores y cerrás la operación.</span>
+          </div>
+        </li>
+      </ul>
+      <p style="margin-top:24px;">Vas a poder <strong>manejar tus tiempos y tu cartera</strong> de manera independiente, mientras contás con nuestro soporte comercial, administrativo, legal y tecnológico.</p>
+    </div>
+    <div class="modalidad-img fade-up">
+      <img src="Recursos/1.jpg" alt="Trabajo en equipo SMP" />
+    </div>
+  </section>
+
+  <!-- GANANCIAS -->
+  <section class="ganancias" id="ganancias">
+    <div class="ganancias-intro fade-up">
+      <div class="section-label">Ingresos</div>
+      <h2>¿Cuánto<br>podés ganar?</h2>
+      <p>En Bahía Blanca todas las inmobiliarias cobran un 3% de comisión al comprador y un 3% al vendedor cuando se concreta una operación. En SMP, <strong style="color:var(--white)">tu participación va del 45% al 60%</strong> de esa comisión según tu nivel de producción.</p>
+    </div>
+    <div class="stats-grid fade-up">
+      <div class="stat">
+        <strong>45%</strong>
+        <p>Comisión de entrada al sumarte al equipo</p>
+      </div>
+      <div class="stat">
+        <strong>60%</strong>
+        <p>Comisión máxima al superar los umbrales</p>
+      </div>
+      <div class="stat">
+        <strong>3%</strong>
+        <p>Sobre el valor de cada operación que generes</p>
+      </div>
+      <div class="stat">
+        <strong>USD 0</strong>
+        <p>En fotos, videos y cartelería — lo pagamos nosotros</p>
+      </div>
+    </div>
+    <div class="ejemplo-bloque fade-up">
+      <h3>Ejemplo práctico</h3>
+      <p>Si captás y vendés un departamento de <strong>USD 60.000</strong>, la comisión generada es de <strong>USD 3.600</strong>.</p>
+      <span class="highlight">USD 1.800</span>
+      <p>es tu ganancia neta al 50% — <strong>más de $2.500.000 de pesos</strong> por una sola operación.</p>
+      <p style="margin-top:16px;font-size:13px;color:var(--text-muted);">No hay límites: mientras más operaciones concretes, mayores serán tus ingresos.</p>
+    </div>
+  </section>
+
+  <!-- ESCALA DE COMISIONES -->
+  <section class="escala" id="escala">
+    <div class="escala-intro fade-up">
+      <div class="section-label">Escala</div>
+      <h2>La comisión<br>más alta de<br>Bahía Blanca.</h2>
+      <p>Los umbrales se calculan sumando todas las comisiones que generes en el año calendario (1 de enero al 31 de diciembre). <strong>Si en tu primer año superás algún umbral, el año siguiente arrancás desde donde terminaste.</strong></p>
+    </div>
+    <table class="comisiones-table fade-up">
+      <thead>
+        <tr>
+          <th>Nivel</th>
+          <th>Umbral anual generado</th>
+          <th>Tu comisión</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="nivel-tag">🥉 Bronce</span></td>
+          <td>Hasta USD 20.000</td>
+          <td><span class="comision-val">45%</span></td>
+        </tr>
+        <tr>
+          <td><span class="nivel-tag">🥈 Plata</span></td>
+          <td>Entre USD 20.000 y USD 60.000</td>
+          <td><span class="comision-val">50%</span></td>
+        </tr>
+        <tr>
+          <td><span class="nivel-tag">🥇 Oro</span></td>
+          <td>Más de USD 60.000</td>
+          <td><span class="comision-val">60%</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="escala-nota fade-up">Fotografía y cartelería sin costo — nosotros lo pagamos. También nos hacemos cargo de la membresía de todos los portales donde publicamos tus propiedades.</p>
+  </section>
+
+  <!-- QUÉ TE OFRECEMOS -->
+  <section class="ofrecemos" id="ofrecemos">
+    <div class="ofrecemos-intro fade-up">
+      <div class="section-label">Beneficios</div>
+      <h2>Qué te<br>ofrecemos.</h2>
+      <p>Todo lo que necesitás para trabajar con tranquilidad y crecer de forma profesional.</p>
+    </div>
+    <div class="ofrecemos-grid fade-up">
+      <div class="ofrece-card">
+        <div class="ofrece-icon">🏢</div>
+        <h3>Oficina disponible</h3>
+        <p>A tu disposición cuando la necesites, sin costo adicional.</p>
+      </div>
+      <div class="ofrece-card">
+        <div class="ofrece-icon">⚖️</div>
+        <h3>Respaldo legal</h3>
+        <p>Equipo profesional con Martillero matriculado a cargo. Sin intermediarios de franquicia.</p>
+      </div>
+      <div class="ofrece-card">
+        <div class="ofrece-icon">📚</div>
+        <h3>Capacitación constante</h3>
+        <p>Acompañamiento comercial y seguimiento personalizado para potenciar tu desarrollo.</p>
+      </div>
+      <div class="ofrece-card">
+        <div class="ofrece-icon">📷</div>
+        <h3>Fotografía y cartelería</h3>
+        <p>Profesional y sin costo extra. También publicaciones en todos los portales incluidas.</p>
+      </div>
+      <div class="ofrece-card">
+        <div class="ofrece-icon">🛠️</div>
+        <h3>Soporte técnico</h3>
+        <p>Asesoramiento legal y técnico permanente para que trabajes con tranquilidad.</p>
+      </div>
+      <div class="ofrece-card">
+        <div class="ofrece-icon">📋</div>
+        <h3>Procesos claros</h3>
+        <p>Internos y eficientes, diseñados para que gestiones cada operación de forma ordenada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUISITOS -->
+  <section class="requisitos" id="requisitos">
+    <div class="requisitos-text fade-up">
+      <div class="section-label">Requisitos</div>
+      <h2>Lo que<br>necesitamos<br>de vos.</h2>
+      <p>Buscamos personas con <strong>visión a largo plazo</strong>, actitud proactiva y compromiso real. El sector inmobiliario tiene una curva de aprendizaje — pero con dedicación, los resultados llegan.</p>
+      <a href="#cta" class="btn btn-gold" style="margin-top: 8px;">Me interesa sumarme</a>
+    </div>
+    <ul class="req-list fade-up">
+      <li><span class="req-check">✦</span><div><strong>Compromiso de al menos 20hs semanales.</strong></div></li>
+      <li><span class="req-check">✦</span><div>Notebook y teléfono propio.</div></li>
+      <li><span class="req-check">✦</span><div>Movilidad propia (auto o moto) para realizar visitas y tasaciones.</div></li>
+      <li><span class="req-check">✦</span><div>Actitud proactiva, profesionalismo y orientación a resultados.</div></li>
+      <li><span class="req-check">✦</span><div>Buena presencia y respeto por las formas, acorde a la actividad inmobiliaria.</div></li>
+      <li><span class="req-check">✦</span><div>Visión a largo plazo: construir tu negocio lleva tiempo y constancia.</div></li>
+      <li><span class="req-check">✦</span><div>Capacidad financiera para sostenerte los primeros meses hasta tu primera venta (puede demorar 3 o 4 meses).</div></li>
+      <li><span class="req-check">✦</span><div><strong>Durante los primeros 4 meses:</strong> concurrir a la oficina al menos 3hs por semana y participar de las capacitaciones mensuales.</div></li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-intro fade-up">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2>Las dudas<br>más comunes.</h2>
+    </div>
+    <div class="faq-grid fade-up">
+      <div class="faq-item">
+        <h3>¿Tengo que invertir?</h3>
+        <p>Sí. Aunque al principio damos flexibilidad, tenés que tener en cuenta que va a ser requisito <strong>estar inscripto en AFIP (monotributo)</strong> y abonar un <strong>fee mensual de USD 100</strong> a partir del séptimo mes o cuando tengas tu primera venta, lo que ocurra primero.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Cuánto puedo ganar?</h3>
+        <p>Tus ingresos crecen con tu experiencia y compromiso. Un agente productivo tiene que generar <strong>más de USD 2.500 de comisión mensual</strong> siendo constante y proactivo — <strong>más de $3 millones de pesos mensuales</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="valores fade-up">
+    <div class="valores-inner">
+      <div class="section-label" style="justify-content:center;margin-bottom:32px;">Nuestra visión</div>
+      <p>Creemos que el sector inmobiliario puede ser mucho más <strong>profesional, transparente y humano.</strong></p>
+      <p>Por eso trabajamos para elevar el estándar de servicio y acompañar tanto a nuestros agentes como a nuestros clientes con seriedad, empatía y procesos claros.</p>
+      <p>Si compartís estos valores y querés crecer de forma independiente pero <strong>con respaldo real</strong>, este puede ser tu lugar.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="cta-final" id="cta">
+    <img src="Recursos/2.jpg" alt="" class="cta-final-img" />
+    <div class="cta-final-overlay"></div>
+    <div class="cta-final-content fade-up">
+      <div class="section-label">Sumate</div>
+      <h2>¿Querés ser<br>parte?</h2>
+      <p>Si leíste los requisitos y te interesa la propuesta, escribinos por WhatsApp y agendamos una entrevista presencial para conocernos y despejar todas tus dudas.</p>
+      <a href="https://wa.me/5492915120913?text=Hola,%20leí%20cómo%20trabajan%20y%20me%20interesa%20sumarme%20al%20equipo" target="_blank" class="btn btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="Recursos/logo sin fondo blanco.png" alt="SMP Grupo Inmobiliario" />
+    </div>
+    <div class="footer-text">
+      © 2025 SMP Grupo Inmobiliario · Undiano 14, Bahía Blanca · Matrícula 2335
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/smp.inmobiliaria" target="_blank" class="social-btn" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/smp.grupoinmobiliario" target="_blank" class="social-btn" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UCqLMZB-0i3mFebfGoJ9GY8Q" target="_blank" class="social-btn" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
